@@ -1,0 +1,22 @@
+<%= form_with(model: @heihei, local: true) do |form| %>
+  <% if @heihei.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @heihei.errors.count %>件のエラーがあります。</h2>
+      <ul>
+
+      <% @heihei.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+  <div class="heihei_content">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to "Heihei!一覧画面にもどる", heiheis_path %>
