@@ -12,6 +12,10 @@ class HeiheisController < ApplicationController
     redirect_to new_heihei_path
   end
 
+  def show
+    @heihei = Heihei.find(params[:id])
+  end
+
   private
 
   def heihei_params

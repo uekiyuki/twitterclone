@@ -8,8 +8,12 @@
 <% @heiheis.each do |heihei| %>
   <tr>
     <td><%= heihei.content %></td>
+
+    <td><%= link_to '詳細を確認する', heihei_path(heihei.id) %></td>
   </tr>
 <% end %>
+
+<br>
 
 </table>
 <%= link_to '新しくHeiheiを投稿する', new_heihei_path %>
