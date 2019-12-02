@@ -1,33 +1,31 @@
 class HeiheisController < ApplicationController
-  before_action :set_heihei, only: [:show, :edit, :update]
+  before_action :set_heihei, only: [:show, :edit, :update, :destroy]
 
   def index
     @heiheis = Heihei.all
   end
-  # 追記する
+
   def new
     @heihei = Heihei.new
   end
 
   def create
     @heihei = Heihei.new(heihei_params)
-    if @heihei.save
-      # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
-      redirect_to heiheis_path, notice: "Heihei!を作成しました！"
-    else
-      # 入力フォームを再描画します。
+    if params[:back]
       render :new
-    
+    else
+      if @heihei.save
+        redirect_to heiheis_path, notice: "Heiheiを作成しました！"
+      else
+        render 'new'
+      end
     end
   end
 
-
   def show
-    @heihei = Heihei.find(params[:id])
   end
 
   def edit
-    @heihei = Heihei.find(params[:id])
   end
 
   def update
@@ -38,6 +36,17 @@ class HeiheisController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @heihei.destroy
+    redirect_to heiheis_path, notice:"Heihei!を削除しました！"
+  end
+
+  def confirm
+    @heihei = Heihei.new(heihei_params)
+    render :new if @heihei.invalid?
+  end
+
 
   private
 

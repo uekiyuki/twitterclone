@@ -1,5 +1,7 @@
 <h1>投稿一覧</h1>
 
+<p><%= notice %></p>
+
 <table>
   <tr>
     <th>内容</th>
@@ -9,9 +11,10 @@
   <tr>
     <td><%= heihei.content %></td>
 
-    <td><%= link_to '詳細を確認する', heihei_path(heihei.id) %></td>
-     <td><%= link_to 'Heiheiを編集する', edit_heihei_path(heihei.id) %></td>
-  </tr>
+    <td><%= link_to 'Heiheiを確認する', heihei_path(heihei.id) %></td>
+    <td><%= link_to "Heiheiを編集する", edit_heihei_path(heihei.id), data: { confirm: '本当に編集していいですか？' } %></td>
+    <td><%= link_to 'Heiheiを削除する', heihei_path(heihei.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+  
 <% end %>
 
 <br>
