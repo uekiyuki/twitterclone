@@ -22,9 +22,6 @@ class HeiheisController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def edit
   end
 
@@ -44,14 +41,14 @@ class HeiheisController < ApplicationController
 
   def confirm
     @heihei = Heihei.new(heihei_params)
+    @heihei.id = params[:id]
     render :new if @heihei.invalid?
   end
-
 
   private
 
   def heihei_params
-    params.require(:heihei).permit(:content)
+    params.require(:heihei).permit(:id, :content)
   end
 
   def set_heihei

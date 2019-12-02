@@ -1,25 +1,28 @@
-<h1>投稿一覧</h1>
 
-<p><%= notice %></p>
-
-<table>
-  <tr>
-    <th>内容</th>
-  </tr>
-
-<% @heiheis.each do |heihei| %>
-  <tr>
-    <td><%= heihei.content %></td>
-
-    <td><%= link_to 'Heiheiを確認する', heihei_path(heihei.id) %></td>
-    <td><%= link_to "Heiheiを編集する", edit_heihei_path(heihei.id), data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to 'Heiheiを削除する', heihei_path(heihei.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
-  
-<% end %>
-
-<br>
-
-</table>
-<%= link_to '新しくHeiheiを投稿する', new_heihei_path %>
+<header class="header">Heihei!</header>
+<nav class="menu">
+　　<ul>　　　　
+　　　<li><%= notice %></li>
+　　　<li><%= link_to '新しくHeiheiを投稿する', new_heihei_path %></li>
+　　　<li>投稿一覧</li>
+　　</ul>
+</nav>
+<article>
+  <div class = "article">
+　<% @heiheis.each do |heihei| %>
+    <ul>
+      <th><%= heihei.content %></th>
+　　　 <th><%= link_to "Heiheiを編集する", edit_heihei_path(heihei.id), data: { confirm: '本当に編集していいですか？' } %></th>
+      <th><%= link_to 'Heiheiを削除する', heihei_path(heihei.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></th>
+    </ul>
+  </div>
+  <% end %>
+</article>
+<footer class="footer">
+  <ul>
+    <p>運営会社 株式会社UEKI</p>
+    <p>© 1992-2019 Copyright UEKI Corp.</p>
+    </ul>
+</footer>
 
 
